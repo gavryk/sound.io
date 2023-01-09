@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { SettingsSliceTypes } from './types';
 
-const initialState = {
+const initialState: SettingsSliceTypes = {
   links: [
-    { name: 'Home', to: '/', icon: '' },
-    { name: 'Around You', to: '/around-you', icon: '' },
-    { name: 'Top Artists', to: '/top-artists', icon: '' },
-    { name: 'Top Charts', to: '/top-charts', icon: '' },
+    { name: 'Home', to: '/', icon: 'house' },
+    { name: 'Around You', to: '/around-you', icon: 'image' },
+    { name: 'Top Artists', to: '/top-artists', icon: 'users' },
+    { name: 'Top Charts', to: '/top-charts', icon: 'hashtag' },
   ],
 };
 
