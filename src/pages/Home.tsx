@@ -1,9 +1,12 @@
 import React from 'react';
+import { UITypography } from '../components';
 
 export const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <UITypography variant="h1" fontWeight="bold">
+        Home
+      </UITypography>
     </div>
   );
 };
