@@ -21,7 +21,10 @@ export const Sidebar: React.FC = () => {
       {links && (
         <div className={styles.navigationLinks}>
           {links.map((item) => (
-            <NavLink to={item.to} key={item.name}>
+            <NavLink
+              to={item.to}
+              key={item.name}
+              className={({ isActive }) => (isActive ? styles.active : '')}>
               <div className={styles.icon}>
                 <FontAwesomeIcon icon={['fas', item.icon as IconName]} />
               </div>

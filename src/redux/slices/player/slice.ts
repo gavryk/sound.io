@@ -3,7 +3,7 @@ import { PlayerSliceProp } from './types';
 
 const initialState: PlayerSliceProp = {
   songs: [],
-  genresFilter: { title: 'Pop', value: 'pop' },
+  genresFilter: { title: 'All Songs', value: '' },
 };
 
 export const playerSlice = createSlice({

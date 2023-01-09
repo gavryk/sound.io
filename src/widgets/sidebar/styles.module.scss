@@ -23,7 +23,8 @@
     grid-template-columns: var(--base--spaces--5) auto;
     grid-gap: var(--base--spaces--2);
     transition: all 0.4s ease-in-out;
-    &:hover {
+    &:hover,
+    &.active {
       color: var(--base--color--cyan);
     }
   }
