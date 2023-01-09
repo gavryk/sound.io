@@ -1,0 +1,13 @@
+.sidebar {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  background-color: var(--base--color--black);
+  padding: var(--base--spaces--6) var(--base--spaces--3);
+}
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

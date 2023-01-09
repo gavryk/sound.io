@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import playerSlice from './slices/player/slice';
+import settingsSlice from './slices/settings/slice';
 import { useDispatch } from 'react-redux';
 
 export const store = configureStore({
   reducer: {
     player: playerSlice,
+    settings: settingsSlice,
   },
 });
 
