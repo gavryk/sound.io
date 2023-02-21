@@ -1,12 +1,16 @@
 import React from 'react';
 import { SongProp } from '../../redux/slices/player/types';
+import { PlayButton } from '../ui-play-button';
 import styles from './styles.module.scss';
 
 export const UICard: React.FC<SongProp> = ({ title, images, subtitle }) => {
 	return (
 		<div className={styles.card}>
 			<div className={styles.thumbnail}>
-				<img src={images?.coverart || images?.coverarthq} alt="song thumbnail" />
+				<div className={styles.controlBtn}>
+					<PlayButton isPlaying={false} />
+				</div>
+				<img src={images?.coverart || images?.coverarthq} alt="song poster" />
 			</div>
 			<div className={styles.title}>
 				<p className={styles.songName}>

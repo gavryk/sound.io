@@ -5,3 +5,4 @@ export * from './ui-input';
 export * from './ui-label';
 export * from './ui-dropdown';
 export * from './burger';
+export * from './ui-play-button';
