@@ -1,10 +1,11 @@
 export interface SettingsSliceTypes {
-  links: LinkProp[];
-  isLoaded: 'loading' | 'success' | 'error';
+	links: LinkProp[];
+	sidebarActive: boolean;
+	isLoaded: 'loading' | 'success' | 'error';
 }
 
 export type LinkProp = {
-  name: string;
-  to: string;
-  icon: string;
+	name: string;
+	to: string;
+	icon: string;
 };

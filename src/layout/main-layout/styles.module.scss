@@ -8,13 +8,31 @@
 	margin: 0 auto;
 	overflow: hidden;
 	background: linear-gradient(130deg, rgba(25, 22, 36, 1) 0%, rgb(55, 7, 101) 80%);
+	@media screen and (max-width: 576px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
+
+.topLayout {
+	grid-column-start: 1;
+	grid-column-end: -1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	flex-direction: row;
+	grid-gap: 20px;
+}
+
 .layoutContent {
 	display: grid;
 	grid-template-columns: 1fr 0.6fr;
 	grid-template-rows: auto 1fr;
 	grid-gap: var(--base--spaces--3);
 	padding: var(--base--spaces--4);
+	@media screen and (max-width: 1024px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 .layoutInner {
 	position: relative;

@@ -9,6 +9,7 @@ const initialState: SettingsSliceTypes = {
 		{ name: 'Top Artists', to: '/top-artists', icon: 'users' },
 		{ name: 'Top Charts', to: '/top-charts', icon: 'hashtag' },
 	],
+	sidebarActive: false,
 	isLoaded: 'loading',
 };
 
@@ -18,6 +19,9 @@ export const settingsSlice = createSlice({
 	reducers: {
 		setLoading: (state, action) => {
 			state.isLoaded = action.payload;
+		},
+		setSidebarStatus: (state, action) => {
+			state.sidebarActive = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -33,6 +37,6 @@ export const settingsSlice = createSlice({
 	},
 });
 
-export const { setLoading } = settingsSlice.actions;
+export const { setLoading, setSidebarStatus } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
