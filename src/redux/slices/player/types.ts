@@ -1,9 +1,14 @@
 export interface PlayerSliceProp {
-  songs: any[];
-  genresFilter: FilterProp;
+	songs: SongProp[];
+	genresFilter: FilterProp;
 }
 
+export type SongProp = {
+	title: string;
+	key: string;
+};
+
 export type FilterProp = {
-  title: string;
-  value: string;
+	title: string;
+	value: string;
 };
