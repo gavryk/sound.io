@@ -1,5 +1,6 @@
 export interface SettingsSliceTypes {
   links: LinkProp[];
+  isLoaded: 'loading' | 'success' | 'error';
 }
 
 export type LinkProp = {

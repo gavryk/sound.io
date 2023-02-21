@@ -8,15 +8,20 @@ const initialState: SettingsSliceTypes = {
     { name: 'Top Artists', to: '/top-artists', icon: 'users' },
     { name: 'Top Charts', to: '/top-charts', icon: 'hashtag' },
   ],
+  isLoaded: 'loading',
 };
 
 export const settingsSlice = createSlice({
   name: 'settings',
   initialState,
-  reducers: {},
+  reducers: {
+    setLoading: (state, action) => {
+      state.isLoaded = action.payload;
+    },
+  },
   extraReducers: (builder) => {},
 });
 
-// export const {  } = playerSlice.actions;
+export const { setLoading } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
