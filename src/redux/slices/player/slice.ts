@@ -5,12 +5,12 @@ import { PlayerSliceProp } from './types';
 const initialState: PlayerSliceProp = {
 	songs: [],
 	activeSong: {
-		title: 'Flowers',
+		title: '',
 		subtitle: '',
 		images: { background: '', coverart: '', coverarthq: '', joecolor: '' },
 		key: '',
 	},
-	isPlaying: true,
+	isPlaying: false,
 	genresFilter: { title: 'All Songs', value: '' },
 };
 
