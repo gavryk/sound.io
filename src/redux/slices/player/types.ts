@@ -1,5 +1,7 @@
 export interface PlayerSliceProp {
 	songs: SongProp[];
+	isPlaying: boolean;
+	activeSong: SongProp;
 	genresFilter: FilterProp;
 }
 

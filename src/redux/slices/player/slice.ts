@@ -4,6 +4,13 @@ import { PlayerSliceProp } from './types';
 
 const initialState: PlayerSliceProp = {
 	songs: [],
+	activeSong: {
+		title: 'Flowers',
+		subtitle: '',
+		images: { background: '', coverart: '', coverarthq: '', joecolor: '' },
+		key: '',
+	},
+	isPlaying: true,
 	genresFilter: { title: 'All Songs', value: '' },
 };
 
