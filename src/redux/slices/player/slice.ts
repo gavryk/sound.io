@@ -21,6 +21,12 @@ export const playerSlice = createSlice({
 		setFilter: (state, action) => {
 			state.genresFilter = action.payload;
 		},
+		setActiveSong: (state, action) => {
+			state.activeSong = action.payload;
+		},
+		playPause: (state, action) => {
+			state.isPlaying = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchTopCharts.pending, (state) => {
@@ -35,6 +41,6 @@ export const playerSlice = createSlice({
 	},
 });
 
-export const { setFilter } = playerSlice.actions;
+export const { setFilter, setActiveSong, playPause } = playerSlice.actions;
 
 export default playerSlice.reducer;

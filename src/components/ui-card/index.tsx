@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { playerSelector } from '../../redux/slices/player/selector';
 import { SongProp } from '../../redux/slices/player/types';
 import { PlayButton } from '../../widgets/player-bar/ui';
+import imgHolder from '../../assets/images/no-image.jpg';
 import styles from './styles.module.scss';
 
 type CardProp = SongProp & {
@@ -22,7 +23,7 @@ export const UICard: React.FC<CardProp> = ({ title, images, subtitle, clickHandl
 					})}>
 					<PlayButton isPlaying={activeSong.title === title && isPlaying} onClick={clickHandler} />
 				</div>
-				<img src={images?.coverart || images?.coverarthq} alt="song poster" />
+				<img src={images?.coverart || imgHolder} alt="song poster" />
 			</div>
 			<div className={styles.title}>
 				<p className={styles.songName}>

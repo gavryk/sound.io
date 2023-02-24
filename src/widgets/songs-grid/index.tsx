@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { UICard, UIGrid, UITypography } from '../../components';
 import { SkeletonCard } from '../../components/ui-card/skeleton-card';
+import { playerSelector } from '../../redux/slices/player/selector';
+import { playPause, setActiveSong } from '../../redux/slices/player/slice';
 import { SongProp } from '../../redux/slices/player/types';
 import { settingsSelector } from '../../redux/slices/settings/selector';
 import { useAppDispatch } from '../../redux/store';
@@ -14,9 +16,11 @@ interface SongsProps {
 export const Songs: React.FC<SongsProps> = ({ list }) => {
 	const dispatch = useAppDispatch();
 	const { isLoaded } = useSelector(settingsSelector);
+	const { isPlaying, activeSong } = useSelector(playerSelector);
 
 	const handleStartStop = (song: SongProp) => {
-		console.log(song);
+		dispatch(setActiveSong(song));
+		dispatch(playPause(song.title === activeSong.title ? !isPlaying : true));
 	};
 
 	const songsItems = list.map((song) => (
