@@ -1,0 +1,44 @@
+.ActiveSongBar {
+	display: grid;
+	grid-template-columns: 70px auto;
+	align-items: center;
+	grid-gap: 15px;
+	flex: 1;
+}
+
+.ActiveSongPoster {
+	border-radius: 50%;
+	overflow: hidden;
+	aspect-ratio: 1;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	&.active {
+		animation: rotate 10s linear forwards infinite;
+	}
+}
+.ActiveSongName {
+	position: relative;
+	span {
+		display: block;
+		color: #fff;
+		&.name {
+			font-weight: 700;
+			font-size: var(--base--font--size-lg);
+		}
+		&.artist {
+			font-size: var(--base--font--size-md);
+		}
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

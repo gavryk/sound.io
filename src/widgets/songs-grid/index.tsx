@@ -18,13 +18,13 @@ export const Songs: React.FC<SongsProps> = ({ list }) => {
 	const { isLoaded } = useSelector(settingsSelector);
 	const { isPlaying, activeSong } = useSelector(playerSelector);
 
-	const handleStartStop = (song: SongProp) => {
-		dispatch(setActiveSong(song));
+	const handleStartStop = (song: SongProp, i: number) => {
+		dispatch(setActiveSong({ song, i }));
 		dispatch(playPause(song.title === activeSong.title ? !isPlaying : true));
 	};
 
-	const songsItems = list.map((song) => (
-		<UICard {...song} key={song.key} clickHandler={() => handleStartStop(song)} />
+	const songsItems = list.map((song, i) => (
+		<UICard {...song} key={song.key} clickHandler={() => handleStartStop(song, i)} />
 	));
 	const skeleton = [...new Array(9)].map((_, index) => <SkeletonCard key={index} />);
 

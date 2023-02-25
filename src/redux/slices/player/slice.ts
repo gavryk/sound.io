@@ -4,6 +4,8 @@ import { PlayerSliceProp } from './types';
 
 const initialState: PlayerSliceProp = {
 	songs: [],
+	currentIndex: 0,
+	isActive: false,
 	activeSong: {
 		title: '',
 		subtitle: '',
@@ -22,7 +24,9 @@ export const playerSlice = createSlice({
 			state.genresFilter = action.payload;
 		},
 		setActiveSong: (state, action) => {
-			state.activeSong = action.payload;
+			state.activeSong = action.payload.song;
+			state.currentIndex = action.payload.i;
+			state.isActive = true;
 		},
 		playPause: (state, action) => {
 			state.isPlaying = action.payload;

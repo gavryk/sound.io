@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Burger } from '../../components';
-import { SearchBar, Sidebar } from '../../widgets';
+import { PlayerBar, SearchBar, Sidebar } from '../../widgets';
 import styles from './styles.module.scss';
 
 export const MainLayout: React.FC = () => {
@@ -18,6 +18,7 @@ export const MainLayout: React.FC = () => {
 					<Outlet />
 				</div>
 			</div>
+			<PlayerBar />
 		</div>
 	);
 };
