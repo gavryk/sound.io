@@ -16,6 +16,9 @@
 	grid-template-columns: repeat(3, 1fr);
 	justify-content: space-between;
 	grid-gap: 15px;
+	@media screen and (max-width: 1024px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
 	&.active {
 		display: grid;
 	}

@@ -42,6 +42,9 @@
 		content: '';
 		display: block;
 		padding-bottom: 77.7%;
+		@media screen and (max-width: 450px) {
+			padding-bottom: 90.7%;
+		}
 	}
 	img {
 		position: absolute;

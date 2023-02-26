@@ -5,6 +5,9 @@
 	align-items: center;
 	justify-content: center;
 	grid-gap: var(--base--spaces--4);
+	@media screen and (max-width: 768px) {
+		display: none;
+	}
 	p {
 		color: #fff;
 	}

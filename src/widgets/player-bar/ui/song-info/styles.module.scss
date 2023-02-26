@@ -4,12 +4,18 @@
 	align-items: center;
 	grid-gap: 15px;
 	flex: 1;
+	@media screen and (max-width: 576px) {
+		grid-template-columns: repeat(1, auto);
+	}
 }
 
 .ActiveSongPoster {
 	border-radius: 50%;
 	overflow: hidden;
 	aspect-ratio: 1;
+	@media screen and (max-width: 576px) {
+		display: none;
+	}
 	img {
 		width: 100%;
 		height: 100%;
@@ -21,6 +27,10 @@
 }
 .ActiveSongName {
 	position: relative;
+	@media screen and (max-width: 576px) {
+		overflow: hidden;
+		white-space: nowrap;
+	}
 	span {
 		display: block;
 		color: #fff;

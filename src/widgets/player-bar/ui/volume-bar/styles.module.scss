@@ -4,6 +4,9 @@
 	justify-content: flex-end;
 	align-items: center;
 	grid-gap: var(--base--spaces--4);
+	@media screen and (max-width: 1024px) {
+		display: none;
+	}
 	.bar {
 		height: 3px;
 		-webkit-appearance: none;

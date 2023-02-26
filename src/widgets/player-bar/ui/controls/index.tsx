@@ -35,6 +35,7 @@ export const Controls: React.FC<ControlsBarProps> = ({
 				color={repeat ? '#5db1d8' : '#fff'}
 				onClick={() => setRepeat(!repeat)}
 				style={{ cursor: 'pointer' }}
+				className={styles.mobHide}
 			/>
 			{songs?.length && (
 				<FontAwesomeIcon
@@ -61,6 +62,7 @@ export const Controls: React.FC<ControlsBarProps> = ({
 				color={shuffle ? '#5db1d8' : '#fff'}
 				onClick={() => setShuffle(!shuffle)}
 				style={{ cursor: 'pointer' }}
+				className={styles.mobHide}
 			/>
 		</div>
 	);

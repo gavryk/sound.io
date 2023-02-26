@@ -4,6 +4,9 @@
 	justify-content: center;
 	align-items: center;
 	grid-gap: var(--base--spaces--5);
+	@media screen and (max-width: 768px) {
+		grid-template-columns: repeat(3, auto);
+	}
 	svg {
 		path {
 			transition: all 0.3s ease-in-out;
@@ -13,5 +16,10 @@
 				fill: var(--base--color--lightblue-2);
 			}
 		}
+	}
+}
+.mobHide {
+	@media screen and (max-width: 768px) {
+		display: none;
 	}
 }
