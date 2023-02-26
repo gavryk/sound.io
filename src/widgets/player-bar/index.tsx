@@ -5,7 +5,7 @@ import { playerSelector } from '../../redux/slices/player/selector';
 import { playPause } from '../../redux/slices/player/slice';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
-import { PlayButton, SongInfo } from './ui';
+import { PlayButton, SongInfo, VolumeBar } from './ui';
 
 export const PlayerBar: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -29,6 +29,13 @@ export const PlayerBar: React.FC = () => {
 			<div className={styles.middleBar}>
 				<PlayButton isPlaying={isPlaying} onClick={handlePlayPause} />
 			</div>
+			<VolumeBar
+				value={volume}
+				min={0}
+				max={1}
+				onChange={(event) => setVolume(Number(event.target.value))}
+				setVolume={(val: number) => setVolume(val)}
+			/>
 		</div>
 	);
 };

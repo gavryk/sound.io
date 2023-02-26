@@ -1,0 +1,29 @@
+.vulumeBar {
+	display: grid;
+	grid-template-columns: 20px auto;
+	align-items: center;
+	grid-gap: var(--base--spaces--4);
+	.bar {
+		height: 3px;
+		-webkit-appearance: none;
+		appearance: none;
+		background-color: var(--base--color--white);
+		cursor: pointer;
+		outline: none;
+		&::-webkit-slider-thumb {
+			background-color: var(--base--color--main);
+			border: 0;
+			border-radius: 50%;
+			box-shadow: 0 0.125em 0.5em hsl(0, 0%, 0%, 0.3);
+			width: 15px;
+			height: 15px;
+			transition: background-color 0.15s linear;
+			-webkit-appearance: none;
+			appearance: none;
+		}
+		&::-webkit-slider-thumb:hover {
+			transform: scale(1.1);
+			background: var(--base--color--lightblue);
+		}
+	}
+}
