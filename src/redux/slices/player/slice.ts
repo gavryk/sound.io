@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchTopCharts } from './asyncSongs';
 import { PlayerSliceProp } from './types';
 
@@ -28,6 +28,19 @@ export const playerSlice = createSlice({
 			state.currentIndex = action.payload.i;
 			state.isActive = true;
 		},
+		nextSong: (state, action: PayloadAction<number>) => {
+			const index = action.payload;
+			state.activeSong = state.songs[index];
+			state.currentIndex = index;
+			state.isActive = true;
+		},
+
+		prevSong: (state, action) => {
+			const index = action.payload;
+			state.activeSong = state.songs[index];
+			state.currentIndex = index;
+			state.isActive = true;
+		},
 		playPause: (state, action) => {
 			state.isPlaying = action.payload;
 		},
@@ -45,6 +58,6 @@ export const playerSlice = createSlice({
 	},
 });
 
-export const { setFilter, setActiveSong, playPause } = playerSlice.actions;
+export const { setFilter, setActiveSong, playPause, nextSong, prevSong } = playerSlice.actions;
 
 export default playerSlice.reducer;

@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { FormEvent, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { playerSelector } from '../../redux/slices/player/selector';
-import { playPause } from '../../redux/slices/player/slice';
+import { nextSong, playPause, prevSong } from '../../redux/slices/player/slice';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
-import { PlayButton, SongInfo, VolumeBar } from './ui';
+import { PlayButton, Player, SongInfo, VolumeBar } from './ui';
 
 export const PlayerBar: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -23,11 +23,50 @@ export const PlayerBar: React.FC = () => {
 		dispatch(playPause(!isPlaying));
 	};
 
+	const handleNextSong = useCallback(() => {
+		dispatch(playPause(false));
+
+		if (!shuffle) {
+			dispatch(nextSong((currentIndex + 1) % songs.length));
+		} else {
+			dispatch(nextSong(Math.floor(Math.random() * songs.length)));
+		}
+	}, [currentIndex, songs, dispatch, shuffle]);
+
+	const handlePrevSong = useCallback(() => {
+		if (currentIndex === 0) {
+			dispatch(prevSong(songs.length - 1));
+		} else if (shuffle) {
+			dispatch(prevSong(Math.floor(Math.random() * songs.length)));
+		} else {
+			dispatch(prevSong(currentIndex - 1));
+		}
+	}, [currentIndex, songs, dispatch, shuffle]);
+
+	const handleTimeUpdate = useCallback(
+		(event: FormEvent<HTMLAudioElement>) => setAppTime(event.currentTarget.currentTime),
+		[],
+	);
+	const handleLoadedData = useCallback(
+		(event: FormEvent<HTMLAudioElement>) => setDuration(event.currentTarget.duration),
+		[],
+	);
+
 	return (
 		<div className={clsx(styles.musicPlayer, { [styles.active]: isActive })}>
 			<SongInfo isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} />
 			<div className={styles.middleBar}>
 				<PlayButton isPlaying={isPlaying} onClick={handlePlayPause} />
+				<Player
+					activeSong={activeSong}
+					volume={volume}
+					isPlaying={isPlaying}
+					seekTime={seekTime}
+					repeat={repeat}
+					onEnded={handleNextSong}
+					onTimeUpdate={handleTimeUpdate}
+					onLoadedData={handleLoadedData}
+				/>
 			</div>
 			<VolumeBar
 				value={volume}
