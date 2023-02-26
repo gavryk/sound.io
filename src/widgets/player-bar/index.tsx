@@ -5,7 +5,7 @@ import { playerSelector } from '../../redux/slices/player/selector';
 import { nextSong, playPause, prevSong } from '../../redux/slices/player/slice';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
-import { PlayButton, Player, SongInfo, TrackBar, VolumeBar } from './ui';
+import { Controls, Player, SongInfo, TrackBar, VolumeBar } from './ui';
 
 export const PlayerBar: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -29,7 +29,7 @@ export const PlayerBar: React.FC = () => {
 		} else {
 			dispatch(nextSong(Math.floor(Math.random() * songs.length)));
 		}
-	}, [currentIndex, dispatch, shuffle]);
+	}, [currentIndex, songs, dispatch, shuffle]);
 
 	const handlePrevSong = useCallback(() => {
 		if (currentIndex === 0) {
@@ -39,7 +39,7 @@ export const PlayerBar: React.FC = () => {
 		} else {
 			dispatch(prevSong(currentIndex - 1));
 		}
-	}, [currentIndex, dispatch, shuffle]);
+	}, [currentIndex, dispatch, songs, shuffle]);
 
 	const handleTimeUpdate = useCallback(
 		(event: FormEvent<HTMLAudioElement>) => setAppTime(event.currentTarget.currentTime),
@@ -54,7 +54,17 @@ export const PlayerBar: React.FC = () => {
 		<div className={clsx(styles.musicPlayer, { [styles.active]: isActive })}>
 			<SongInfo isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} />
 			<div className={styles.middleBar}>
-				<PlayButton isPlaying={isPlaying} onClick={handlePlayPause} />
+				<Controls
+					isPlaying={isPlaying}
+					repeat={repeat}
+					setRepeat={setRepeat}
+					shuffle={shuffle}
+					setShuffle={setShuffle}
+					songs={songs}
+					handlePlayPause={handlePlayPause}
+					handlePrevSong={handlePrevSong}
+					handleNextSong={handleNextSong}
+				/>
 				<TrackBar value={appTime} min="0" max={duration} setSeekTime={setSeekTime} />
 				<Player
 					activeSong={activeSong}
