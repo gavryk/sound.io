@@ -8,7 +8,7 @@ import { FilterProp } from '../../redux/slices/player/types';
 interface DropdownProps {
 	list: any[];
 	selected: FilterProp;
-	onSetSort: (obj: string) => void;
+	onSetSort: (obj: FilterProp) => void;
 }
 
 type PopupClick = MouseEvent & {

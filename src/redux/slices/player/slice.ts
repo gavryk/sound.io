@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchTopCharts } from './asyncSongs';
+import { fetchSongsByGenre, fetchTopCharts } from './asyncSongs';
 import { PlayerSliceProp } from './types';
 
 const initialState: PlayerSliceProp = {
@@ -53,6 +53,15 @@ export const playerSlice = createSlice({
 			state.songs = action.payload;
 		});
 		builder.addCase(fetchTopCharts.rejected, (state) => {
+			state.songs = [];
+		});
+		builder.addCase(fetchSongsByGenre.pending, (state) => {
+			state.songs = [];
+		});
+		builder.addCase(fetchSongsByGenre.fulfilled, (state, action) => {
+			state.songs = action.payload;
+		});
+		builder.addCase(fetchSongsByGenre.rejected, (state) => {
 			state.songs = [];
 		});
 	},

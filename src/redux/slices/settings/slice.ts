@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTopCharts } from '../player/asyncSongs';
+import { fetchSongsByGenre, fetchTopCharts } from '../player/asyncSongs';
 import { SettingsSliceTypes } from './types';
 
 const initialState: SettingsSliceTypes = {
@@ -32,6 +32,15 @@ export const settingsSlice = createSlice({
 			state.isLoaded = 'success';
 		});
 		builder.addCase(fetchTopCharts.rejected, (state) => {
+			state.isLoaded = 'error';
+		});
+		builder.addCase(fetchSongsByGenre.pending, (state) => {
+			state.isLoaded = 'loading';
+		});
+		builder.addCase(fetchSongsByGenre.fulfilled, (state, action) => {
+			state.isLoaded = 'success';
+		});
+		builder.addCase(fetchSongsByGenre.rejected, (state) => {
 			state.isLoaded = 'error';
 		});
 	},
