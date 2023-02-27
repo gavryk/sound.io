@@ -26,12 +26,8 @@ export const UICard: React.FC<CardProp> = ({ title, images, subtitle, clickHandl
 				<img src={images?.coverart || imgHolder} alt="song poster" />
 			</div>
 			<div className={styles.title}>
-				<p className={styles.songName}>
-					{title.length > 35 ? `${title.substring(0, 35)}...` : title}
-				</p>
-				<p className={styles.artistName}>
-					{subtitle.length > 30 ? `${subtitle.substring(0, 30)}...` : subtitle}
-				</p>
+				<p className={styles.songName}>{title}</p>
+				<p className={styles.artistName}>{subtitle}</p>
 			</div>
 		</div>
 	);

@@ -11,6 +11,9 @@
 	cursor: pointer;
 	padding: var(--base--spaces--4);
 	box-shadow: var(--base--box-shadow-4);
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: var(--base--spaces--4);
 	&:hover {
 		.controlBtn {
 			opacity: 1;
@@ -42,7 +45,6 @@
 	position: relative;
 	overflow: hidden;
 	border-radius: 10px;
-	margin-bottom: var(--base--spaces--4);
 	transition: all 0.4s ease-in-out;
 	&:after {
 		content: '';
@@ -62,8 +64,18 @@
 	}
 }
 .title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	p {
 		color: var(--base--color--white);
 		display: block;
+		&.songName {
+			font-weight: 700;
+			margin-bottom: var(--base--spaces--1);
+		}
+		&.artistName {
+			font-size: var(--base--font--size);
+		}
 	}
 }
