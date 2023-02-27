@@ -6,68 +6,71 @@ import { UILabel } from '../ui-label';
 import styles from './styles.module.scss';
 
 interface InputProps {
-  label?: string;
-  id?: string;
-  type: React.HTMLInputTypeAttribute;
-  required?: InputHTMLAttributes<HTMLInputElement>['required'];
-  onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  name?: string;
-  value?: string | number;
-  error?: string | boolean;
-  placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  onInput?: React.FormEventHandler<HTMLInputElement>;
-  onClick?: React.MouseEventHandler<HTMLInputElement>;
-  checked?: boolean;
-  spaceOff?: boolean;
+	label?: string;
+	id?: string;
+	type: React.HTMLInputTypeAttribute;
+	required?: InputHTMLAttributes<HTMLInputElement>['required'];
+	onBlur?: React.FocusEventHandler<HTMLInputElement>;
+	name?: string;
+	value?: string | number;
+	error?: string | boolean;
+	placeholder?: string;
+	onChange?: React.ChangeEventHandler<HTMLInputElement>;
+	onInput?: React.FormEventHandler<HTMLInputElement>;
+	onClick?: React.MouseEventHandler<HTMLInputElement>;
+	onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+	checked?: boolean;
+	spaceOff?: boolean;
 }
 
 export const UIInput = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      label,
-      id,
-      type,
-      required,
-      onBlur,
-      name,
-      placeholder,
-      value,
-      onChange,
-      onInput,
-      onClick,
-      error,
-      checked,
-      spaceOff,
-    },
-    ref,
-  ) => {
-    return (
-      <div className={clsx(styles.UIInput, styles[type])}>
-        {label && type !== 'radio' && type !== 'checkbox' && (
-          <UILabel htmlFor={id ? id : ''}>{label}</UILabel>
-        )}
-        <input
-          id={id}
-          type={type}
-          onBlur={onBlur}
-          name={name}
-          required={required}
-          onChange={onChange}
-          onInput={onInput}
-          placeholder={placeholder}
-          onClick={onClick}
-          value={value}
-          className={clsx(styles.input, { [styles.error]: error, [styles.spaceOff]: spaceOff })}
-          ref={ref}
-          checked={checked}
-        />
-        {label && (type === 'radio' || type === 'checkbox') && (
-          <UILabel htmlFor={id ? id : ''}>{label}</UILabel>
-        )}
-        {type === 'search' && <FontAwesomeIcon icon={faMagnifyingGlass} color="white" />}
-        {error && <span className={styles.errorTxt}>{error}</span>}
-      </div>
-    );
-  },
+	(
+		{
+			label,
+			id,
+			type,
+			required,
+			onBlur,
+			name,
+			placeholder,
+			value,
+			onChange,
+			onInput,
+			onClick,
+			error,
+			checked,
+			spaceOff,
+			onKeyDown,
+		},
+		ref,
+	) => {
+		return (
+			<div className={clsx(styles.UIInput, styles[type])}>
+				{label && type !== 'radio' && type !== 'checkbox' && (
+					<UILabel htmlFor={id ? id : ''}>{label}</UILabel>
+				)}
+				<input
+					id={id}
+					type={type}
+					onBlur={onBlur}
+					name={name}
+					required={required}
+					onChange={onChange}
+					onInput={onInput}
+					placeholder={placeholder}
+					onKeyDown={onKeyDown}
+					onClick={onClick}
+					value={value}
+					className={clsx(styles.input, { [styles.error]: error, [styles.spaceOff]: spaceOff })}
+					ref={ref}
+					checked={checked}
+				/>
+				{label && (type === 'radio' || type === 'checkbox') && (
+					<UILabel htmlFor={id ? id : ''}>{label}</UILabel>
+				)}
+				{type === 'search' && <FontAwesomeIcon icon={faMagnifyingGlass} color="white" />}
+				{error && <span className={styles.errorTxt}>{error}</span>}
+			</div>
+		);
+	},
 );

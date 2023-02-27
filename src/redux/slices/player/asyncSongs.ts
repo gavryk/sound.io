@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../../axios';
-import { SongProp } from './types';
+import { SearchResultProp, SongProp } from './types';
 
 export const fetchTopCharts = createAsyncThunk('songs/fetchSongs', async () => {
 	const { data } = await axios.get(`/charts/world`);
@@ -19,6 +19,14 @@ export const fetchSongsAround = createAsyncThunk<SongProp[], string>(
 	'songs/fetchSongsAround',
 	async (countryCode) => {
 		const { data } = await axios.get(`/charts/country?country_code=${countryCode}`);
+		return data;
+	},
+);
+
+export const fetchSongsBySearch = createAsyncThunk<SearchResultProp, string>(
+	'songs/fetchSongsBySearch',
+	async (searchText) => {
+		const { data } = await axios.get(`/search/multi?search_type=SONGS_ARTISTS&query=${searchText}`);
 		return data;
 	},
 );

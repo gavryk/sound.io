@@ -12,7 +12,7 @@ export const Home = () => {
 
 	useEffect(() => {
 		dispatch(fetchSongsByGenre(genresFilter.value));
-	}, [dispatch]);
+	}, [dispatch, genresFilter]);
 
 	return (
 		<>

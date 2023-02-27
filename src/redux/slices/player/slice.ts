@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
-import { fetchSongsAround, fetchSongsByGenre, fetchTopCharts } from './asyncSongs';
+import {
+	fetchSongsAround,
+	fetchSongsByGenre,
+	fetchSongsBySearch,
+	fetchTopCharts,
+} from './asyncSongs';
 import { PlayerSliceProp } from './types';
 
 const initialState: PlayerSliceProp = {
@@ -14,6 +19,14 @@ const initialState: PlayerSliceProp = {
 	},
 	isPlaying: false,
 	genresFilter: { title: 'Pop', value: 'POP' },
+	searchResult: {
+		tracks: {
+			hits: [],
+		},
+		artists: {
+			hits: [],
+		},
+	},
 };
 
 export const playerSlice = createSlice({
@@ -46,6 +59,30 @@ export const playerSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
+		builder.addCase(fetchSongsBySearch.pending, (state) => {
+			state.searchResult = {
+				tracks: {
+					hits: [],
+				},
+				artists: {
+					hits: [],
+				},
+			};
+		});
+		builder.addCase(fetchSongsBySearch.fulfilled, (state, action) => {
+			state.searchResult = action.payload;
+			state.songs = action.payload.tracks.hits.map((song) => song.track);
+		});
+		builder.addCase(fetchSongsBySearch.rejected, (state) => {
+			state.searchResult = {
+				tracks: {
+					hits: [],
+				},
+				artists: {
+					hits: [],
+				},
+			};
+		});
 		builder.addMatcher(
 			isAnyOf(fetchTopCharts.pending, fetchSongsByGenre.pending, fetchSongsAround.pending),
 			(state) => {

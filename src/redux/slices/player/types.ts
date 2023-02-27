@@ -6,6 +6,7 @@ export interface PlayerSliceProp {
 	isPlaying: boolean;
 	activeSong: SongProp;
 	genresFilter: FilterProp;
+	searchResult: SearchResultProp;
 }
 //Single Song
 export type SongProp = {
@@ -40,6 +41,34 @@ export type FilterProp = {
 	title: string;
 	value: string;
 };
+
+export interface SearchResultProp {
+	tracks: SearchTrackProp;
+	artists?: SearchArtistProp;
+}
+
+export type SearchTrackProp = {
+	hits: HitsTrackProp[];
+};
+
+export type HitsTrackProp = {
+	track: SongProp;
+};
+
+export type SearchArtistProp = {
+	hits: ArtistProps[];
+};
+
+export type ArtistProps = {
+	artists: {
+		avatar: string;
+		name: string;
+		verified: string;
+		weburl: boolean;
+		adamid: string;
+	};
+};
+
 //Unknown
 export type ArtistSong = {
 	attributes?: SongAttributes;

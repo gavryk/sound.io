@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchSongsAround, fetchSongsByGenre, fetchTopCharts } from '../player/asyncSongs';
+import {
+	fetchSongsAround,
+	fetchSongsByGenre,
+	fetchSongsBySearch,
+	fetchTopCharts,
+} from '../player/asyncSongs';
 import { SettingsSliceTypes } from './types';
 
 const initialState: SettingsSliceTypes = {
@@ -26,19 +31,34 @@ export const settingsSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addMatcher(
-			isAnyOf(fetchTopCharts.pending, fetchSongsByGenre.pending, fetchSongsAround.pending),
+			isAnyOf(
+				fetchTopCharts.pending,
+				fetchSongsByGenre.pending,
+				fetchSongsAround.pending,
+				fetchSongsBySearch.pending,
+			),
 			(state) => {
 				state.isLoaded = 'loading';
 			},
 		);
 		builder.addMatcher(
-			isAnyOf(fetchTopCharts.fulfilled, fetchSongsByGenre.fulfilled, fetchSongsAround.fulfilled),
+			isAnyOf(
+				fetchTopCharts.fulfilled,
+				fetchSongsByGenre.fulfilled,
+				fetchSongsAround.fulfilled,
+				fetchSongsBySearch.fulfilled,
+			),
 			(state, action) => {
 				state.isLoaded = 'success';
 			},
 		);
 		builder.addMatcher(
-			isAnyOf(fetchTopCharts.rejected, fetchSongsByGenre.rejected, fetchSongsAround.rejected),
+			isAnyOf(
+				fetchTopCharts.rejected,
+				fetchSongsByGenre.rejected,
+				fetchSongsAround.rejected,
+				fetchSongsBySearch.rejected,
+			),
 			(state) => {
 				state.isLoaded = 'error';
 			},
