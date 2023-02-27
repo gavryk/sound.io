@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchSongsByGenre, fetchTopCharts } from './asyncSongs';
+import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
+import { fetchSongsAround, fetchSongsByGenre, fetchTopCharts } from './asyncSongs';
 import { PlayerSliceProp } from './types';
 
 const initialState: PlayerSliceProp = {
@@ -46,24 +46,24 @@ export const playerSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchTopCharts.pending, (state) => {
-			state.songs = [];
-		});
-		builder.addCase(fetchTopCharts.fulfilled, (state, action) => {
-			state.songs = action.payload;
-		});
-		builder.addCase(fetchTopCharts.rejected, (state) => {
-			state.songs = [];
-		});
-		builder.addCase(fetchSongsByGenre.pending, (state) => {
-			state.songs = [];
-		});
-		builder.addCase(fetchSongsByGenre.fulfilled, (state, action) => {
-			state.songs = action.payload;
-		});
-		builder.addCase(fetchSongsByGenre.rejected, (state) => {
-			state.songs = [];
-		});
+		builder.addMatcher(
+			isAnyOf(fetchTopCharts.pending, fetchSongsByGenre.pending, fetchSongsAround.pending),
+			(state) => {
+				state.songs = [];
+			},
+		);
+		builder.addMatcher(
+			isAnyOf(fetchTopCharts.fulfilled, fetchSongsByGenre.fulfilled, fetchSongsAround.fulfilled),
+			(state, action) => {
+				state.songs = action.payload;
+			},
+		);
+		builder.addMatcher(
+			isAnyOf(fetchTopCharts.rejected, fetchSongsByGenre.rejected, fetchSongsAround.rejected),
+			(state) => {
+				state.songs = [];
+			},
+		);
 	},
 });
 
