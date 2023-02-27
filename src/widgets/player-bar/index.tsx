@@ -3,6 +3,7 @@ import React, { FormEvent, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { playerSelector } from '../../redux/slices/player/selector';
 import { nextSong, playPause, prevSong } from '../../redux/slices/player/slice';
+import { settingsSelector } from '../../redux/slices/settings/selector';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
 import { Controls, Player, SongInfo, TrackBar, VolumeBar } from './ui';
@@ -10,6 +11,7 @@ import { Controls, Player, SongInfo, TrackBar, VolumeBar } from './ui';
 export const PlayerBar: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const { activeSong, currentIndex, songs, isActive, isPlaying } = useSelector(playerSelector);
+	const { sidebarActive } = useSelector(settingsSelector);
 	const [duration, setDuration] = useState(0);
 	const [seekTime, setSeekTime] = useState(0);
 	const [appTime, setAppTime] = useState(0);
@@ -51,7 +53,11 @@ export const PlayerBar: React.FC = () => {
 	);
 
 	return (
-		<div className={clsx(styles.musicPlayer, { [styles.active]: isActive })}>
+		<div
+			className={clsx(styles.musicPlayer, {
+				[styles.active]: isActive,
+				[styles.mobileIndex]: sidebarActive,
+			})}>
 			<SongInfo isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} />
 			<div className={styles.middleBar}>
 				<Controls

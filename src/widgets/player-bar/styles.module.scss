@@ -22,6 +22,11 @@
 	&.active {
 		display: grid;
 	}
+	&.mobileIndex {
+		@media screen and (max-width: 576px) {
+			z-index: 1;
+		}
+	}
 }
 
 .middleBar {

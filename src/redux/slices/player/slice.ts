@@ -13,7 +13,7 @@ const initialState: PlayerSliceProp = {
 		key: '',
 	},
 	isPlaying: false,
-	genresFilter: { title: 'All Songs', value: '' },
+	genresFilter: { title: 'Pop', value: 'POP' },
 };
 
 export const playerSlice = createSlice({

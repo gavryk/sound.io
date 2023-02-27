@@ -1,10 +1,16 @@
 .card {
 	position: relative;
-	background-color: rgba(255, 255, 255, 0.15);
-	backdrop-filter: blur(5px);
-	border-radius: 15px;
+	-webkit-backdrop-filter: blur(24px);
+	backdrop-filter: blur(24px);
+	background-image: linear-gradient(
+		to bottom right,
+		rgba(31, 15, 96, 0.7),
+		rgba(93, 177, 216, 0.2)
+	);
+	border-radius: 10px;
 	cursor: pointer;
 	padding: var(--base--spaces--4);
+	box-shadow: var(--base--box-shadow-4);
 	&:hover {
 		.controlBtn {
 			opacity: 1;
@@ -35,8 +41,8 @@
 .thumbnail {
 	position: relative;
 	overflow: hidden;
-	border-radius: 15px;
-	margin-bottom: 15px;
+	border-radius: 10px;
+	margin-bottom: var(--base--spaces--4);
 	transition: all 0.4s ease-in-out;
 	&:after {
 		content: '';

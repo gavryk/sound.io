@@ -46,7 +46,7 @@
 
 .layoutContent {
 	display: grid;
-	grid-template-columns: 1fr 0.6fr;
+	grid-template-columns: repeat(1, 1fr);
 	grid-template-rows: auto 1fr;
 	grid-gap: var(--base--spaces--3);
 	padding: var(--base--spaces--4);
@@ -58,4 +58,5 @@
 	position: relative;
 	overflow-y: auto;
 	height: calc(100vh - 50px);
+	padding-bottom: 50px;
 }

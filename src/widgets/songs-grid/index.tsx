@@ -34,7 +34,7 @@ export const Songs: React.FC<SongsProps> = ({ list }) => {
 		</UITypography>
 	) : (
 		<div className={styles.resultWrapper}>
-			<UIGrid columns={3} gridGap={5}>
+			<UIGrid columns={5} gridGap={5}>
 				{isLoaded === 'success' ? songsItems : skeleton}
 			</UIGrid>
 		</div>
