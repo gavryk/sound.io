@@ -16,6 +16,7 @@ const initialState: PlayerSliceProp = {
 		subtitle: '',
 		images: { background: '', coverart: '', coverarthq: '', joecolor: '' },
 		key: '',
+		artists: [],
 	},
 	isPlaying: false,
 	genresFilter: { title: 'Pop', value: 'POP' },

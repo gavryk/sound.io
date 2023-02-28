@@ -15,7 +15,16 @@ export type SongProp = {
 	hub?: SongHubProps;
 	images: SongImagesProps;
 	key: string;
+	artists?: SongArtistsProp[];
 };
+
+//Song Artists Prop
+export type SongArtistsProp = {
+	alias: string;
+	id: string;
+	adamid: string;
+};
+
 //Song Hub Props
 export type SongHubProps = {
 	type: string;
@@ -68,27 +77,3 @@ export type ArtistProps = {
 		adamid: string;
 	};
 };
-
-//Unknown
-export type ArtistSong = {
-	attributes?: SongAttributes;
-};
-
-export interface SongAttributes {
-	albumName?: string;
-	name: string;
-	artistName: string;
-	artwork: Artwork;
-	url: string;
-	previews?: Preview[];
-}
-
-export interface Artwork {
-	height: number;
-	url: string;
-	width: number;
-}
-
-export interface Preview {
-	url: string;
-}
