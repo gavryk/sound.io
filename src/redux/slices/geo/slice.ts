@@ -3,7 +3,7 @@ import { getGeoLocation } from './asyncGeo';
 import { GeoLocationTypes } from './types';
 
 const initialState: GeoLocationTypes = {
-	userLocation: {},
+	geo: {},
 };
 
 export const geoLocationSlice = createSlice({
@@ -12,17 +12,17 @@ export const geoLocationSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getGeoLocation.pending, (state) => {
-			state.userLocation = {};
+			state.geo = {};
 		});
 		builder.addCase(getGeoLocation.fulfilled, (state, action) => {
-			state.userLocation = action.payload;
+			state.geo = action.payload;
 		});
 		builder.addCase(getGeoLocation.rejected, (state) => {
-			state.userLocation = {};
+			state.geo = {};
 		});
 	},
 });
 
-export const {} = geoLocationSlice.actions;
+// export const {} = geoLocationSlice.actions;
 
 export default geoLocationSlice.reducer;

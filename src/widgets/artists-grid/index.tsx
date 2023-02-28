@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { UIGrid, UITypography } from '../../components';
-import { ArtistCard } from '../../components/ui-artist-card';
+import { ArtistCard, Loader, UIGrid, UITypography } from '../../components';
 import { SongProp } from '../../redux/slices/player/types';
 import { settingsSelector } from '../../redux/slices/settings/selector';
 import styles from './styles.module.scss';
@@ -19,11 +18,15 @@ export const Artists: React.FC<SongsProps> = ({ list }) => {
 		</UITypography>
 	) : (
 		<div className={styles.resultWrapper}>
-			<UIGrid columns={5} gridGap={10}>
-				{list?.map((song, i) => {
-					return <ArtistCard {...song} key={song.key} />;
-				})}
-			</UIGrid>
+			{isLoaded === 'success' ? (
+				<UIGrid columns={5} gridGap={10}>
+					{list?.map((song, i) => {
+						return <ArtistCard {...song} key={song.key} />;
+					})}
+				</UIGrid>
+			) : (
+				<Loader />
+			)}
 		</div>
 	);
 };
