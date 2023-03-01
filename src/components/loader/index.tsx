@@ -5,12 +5,9 @@ export const Loader: React.FC = () => {
 	return (
 		<div className={styles.loader}>
 			<div className={styles.bars}>
-				<div className={styles.bar}></div>
-				<div className={styles.bar}></div>
-				<div className={styles.bar}></div>
-				<div className={styles.bar}></div>
-				<div className={styles.bar}></div>
-				<div className={styles.bar}></div>
+				{[...new Array(8)].map((_, index) => (
+					<div className={styles.bar}></div>
+				))}
 			</div>
 		</div>
 	);
