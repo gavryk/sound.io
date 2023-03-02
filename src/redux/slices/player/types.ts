@@ -77,3 +77,44 @@ export type ArtistProps = {
 		adamid: string;
 	};
 };
+
+//Details Props
+export interface ArtistDetails {
+	artist: { attributes: ArtistAttributes };
+	song: SongProp;
+}
+
+export interface ArtistSong {
+	attributes?: SongAttributes;
+}
+
+export interface SongAttributes {
+	albumName?: string;
+	name: string;
+	artistName: string;
+	artwork: Artwork;
+	url: string;
+	previews?: Preview[];
+}
+
+export interface ArtistAttributes {
+	artwork: Artwork;
+	genreNames: string[];
+	name: string;
+	url: string;
+}
+
+export interface Artwork {
+	height: number;
+	url: string;
+	width: number;
+}
+
+export interface Preview {
+	url: string;
+}
+
+export interface GeoLocation {
+	country_code2: string;
+	country_name: string;
+}

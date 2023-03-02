@@ -6,7 +6,7 @@ export const Loader: React.FC = () => {
 		<div className={styles.loader}>
 			<div className={styles.bars}>
 				{[...new Array(8)].map((_, index) => (
-					<div className={styles.bar}></div>
+					<div className={styles.bar} key={index}></div>
 				))}
 			</div>
 		</div>
