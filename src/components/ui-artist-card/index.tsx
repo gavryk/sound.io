@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { SongProp } from '../../redux/slices/player/types';
 import imgHolder from '../../assets/images/no-image.jpg';
 import styles from './styles.module.scss';
