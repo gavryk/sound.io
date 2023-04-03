@@ -14,15 +14,3 @@ https://sound-io.vercel.app/
   <li>clsx</li>
 </ul>
 
-<h2>Stack Server:</h2>
-
-<ul>
-  <li>Node Js</li>
-  <li>Express</li>
-  <li>Mongoose</li>
-  <li>Mongo DB</li>
-  <li>jsonwebtoken</li>
-  <li>Multer</li>
-  <li>nodemon</li>
-  <li>bcrypt</li>
-</ul>
