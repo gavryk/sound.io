@@ -9,7 +9,6 @@ https://sound-io.vercel.app/
   <li>Redux Toolkit</li>
   <li>Typescript</li>
   <li>Axios</li>
-  <li>WebSocket</li>
   <li>Lodash</li>
   <li>React Hook Form</li>
   <li>clsx</li>
@@ -19,7 +18,6 @@ https://sound-io.vercel.app/
 
 <ul>
   <li>Node Js</li>
-  <li>WebSocket</li>
   <li>Express</li>
   <li>Mongoose</li>
   <li>Mongo DB</li>
